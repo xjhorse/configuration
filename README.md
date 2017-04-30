@@ -2,10 +2,10 @@
 简单、灵活安装部署新疆马业实例
 
 ## 服务器配置要求
-Ubuntu 16.04 amd64
-Minimum 8GB of memory
-At least one 2.00GHz CPU or EC2 compute unit
-Minimum 25GB of free disk
+- Ubuntu 16.04 amd64
+- Minimum 8GB of memory
+- At least one 2.00GHz CPU or EC2 compute unit
+- Minimum 25GB of free disk
 
 ## 安装步骤
 
