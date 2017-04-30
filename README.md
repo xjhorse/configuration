@@ -3,9 +3,9 @@
 
 ## 服务器配置要求
 - Ubuntu 16.04 amd64
-- Minimum 8GB of memory
-- At least one 2.00GHz CPU or EC2 compute unit
-- Minimum 25GB of free disk
+- 至少4GB内存
+- 至少一颗2.00GHz CPU或一个Amazon AWSEC2实例
+- 至少25GB可用磁盘空间
 
 ## 安装步骤
 
