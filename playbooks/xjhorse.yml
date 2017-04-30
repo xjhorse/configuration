@@ -4,34 +4,31 @@
 
 - name: Configure instance(s)
   hosts: xjhorse
-  become: True
+  sudo: True
   gather_facts: True
+
   vars:
-    migrate_db: "yes"
-    NGINX_PORT: '80'
-    platform_version: 'master'
-    # Set to false if deployed behind another proxy/load balancer.
-    NGINX_SET_X_FORWARDED_HEADERS: True
+    migrate_db: 'yes'
+    openid_workaround: True
+    XJHORSE_NGINX_PORT: '80'
+    XJHORSE_MYSQL_HOST: "{{ groups['datastores'][0] }}"
+    XJHORSE_MEMCACHE: ["{{ groups['datastores'][0] }}:11211"]
 
   roles:
-    - { role: swapfile, SWAPFILE_SIZE: "2GB" }
+
+    # 服务器虚拟内存交换文件大小
+    - { role: swapfile, SWAPFILE_SIZE: "4GB" }
+
+    # nginx反向代理
     - role: nginx
       nginx_sites:
-      - certs
-      - cms
-      - lms
-      - forum
-      - xqueue
+      - xjhorse
       nginx_default_sites:
-      - lms
-    - role: nginx
-    - role: edxlocal
-      when: MYSQL_HOST == 'localhost'
-    - role: memcache
-      when: "'localhost' in ' '.join(MEMCACHE)"
-    - role: mongo
-      when: "'localhost' in EDXAPP_MONGO_HOSTS"
-    - { role: 'rabbitmq', rabbitmq_ip: '127.0.0.1' }
-    - { role: 'edxapp', celery_worker: True }
-    - edxapp
-    - edx_ansible
+      - xjhorse
+
+    # Xjhorse主App
+    # https://github.com/edx/edx-platform
+    - role: xjhorseapp
+      celery_worker: True
+    - xjhorseapp
+    - ansible
