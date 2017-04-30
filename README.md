@@ -18,3 +18,8 @@
 ### 2、自助安装Ansible等模块
 
     wget https://raw.githubusercontent.com/xjhorse/configuration/master/ansible-bootstrap.sh -O - | sudo bash
+
+### 3、克隆新疆马业安装配置资源库
+    cd /var/tmp
+    git clone https://github.com/xjhorse/configuration.git
+    
