@@ -1,0 +1,4 @@
+---
+ansible_inst:
+ dir: /opt/ansible
+ add_evn_setup_hack_sys_wide: True

@@ -1,0 +1,62 @@
+---
+- name: Ubuntu-16 | install packages
+  apt:
+   name: "{{ item }}"
+   state: latest
+   update_cache: yes
+  with_items:
+   - git
+   - python-setuptools
+   - python-dev
+   - build-essential
+   - libffi-dev
+   - libssl-dev
+
+
+- name: Ubuntu-16 | easy_install - Install pip
+  easy_install:
+   name: pip
+
+
+- name: Ubuntu-16 | pip - Install Packages
+  pip:
+   name: "{{ item }}"
+   state: latest
+  with_items:
+   - paramiko
+   - PyYAML
+   - Jinja2
+   - httplib2
+   - simplejson
+   - six
+   - redis
+   - boto
+   - pycrypto
+
+
+- name: Ubuntu-16 | Clone Ansible from github.com
+  git:
+   repo: https://github.com/ansible/ansible.git
+   recursive: yes
+   dest: "{{ ansible_inst.dir }}"
+   accept_hostkey: yes
+   update: no
+
+
+- name: Ubuntu-16 | Add Ansible env-setup hack system wide
+  template:
+   src: ansible-env-setup.j2
+   dest: /etc/profile.d/ansible-env-setup.sh
+   owner: root
+   group: root
+   mode: 0755
+  when: ansible_inst.add_evn_setup_hack_sys_wide
+
+
+- name: Ubuntu-16 | copy ansible_update.sh to remote
+  copy:
+    src: ansible_update.sh
+    dest: "{{ansible_inst.dir}}/ansible_update.sh"
+    owner: root
+    group: root
+    mode: 0750

@@ -1,0 +1,9 @@
+---
+- name: check for supported operating system on target
+  fail:
+    msg: "The operating system of the target machine ({{ inventory_hostname }}) is not currently supported."
+  when: ( ansible_distribution == "Ubuntu" and ansible_distribution_major_version not in ['14', '16'] )
+
+
+- name: include distro specific tasks
+  include: "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
