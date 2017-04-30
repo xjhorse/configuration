@@ -1,0 +1,21 @@
+---
+
+# 安装xjhorse数据库的sandbox配置文件
+
+- name: Configure instance(s)
+  hosts: datastores
+  sudo: True
+  gather_facts: True
+  vars:
+    # 允许外部服务器访问MySQL
+    MYSQL_BIND_ADDRESS: "0.0.0.0"
+    # 允许www.xjhorse.net访问MySQL数据库
+    MYSQL_ALLOWED_HOST: "www.xjhorse.net"
+  vars_files:
+    - "vars.yml"
+  roles:
+    # 安装memcache、mysql等组件，创建数据库用户.
+    - role: memcache
+    - role: common
+    - role: xjhorse_mysql
+    - role: xjhorse_ansible
