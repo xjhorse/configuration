@@ -17,5 +17,5 @@
     # 安装memcache、mysql等组件，创建数据库用户.
     - role: memcache
     - role: common
-    - role: xjhorse_mysql
-    - role: xjhorse_ansible
+    - role: mysql
+    - role: ansible
