@@ -1,10 +1,10 @@
 ---
-# edx门户服务器安装沙盒，使用外部的mysql, # mongo, rabbitmq, and elasticsearch services.
-- name: Configure instance(s) hosts: edx
+# xjhorse门户服务器安装沙盒，使用外部的mysql, memcached
+- name: Configure instance(s) hosts: xjhorse
 sudo: True
 gather_facts: True
-第  13  
-  vars:
+
+vars:
 migrate_db: 'yes'
 openid_workaround: True
 EDXAPP_LMS_NGINX_PORT: '80'
