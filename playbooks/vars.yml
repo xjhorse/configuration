@@ -1,4 +1,4 @@
-# xjhorse role通用的变量，包含该rol后，会自动加载这些变量
+# xjhorse role通用的变量，包含该role后，会自动加载这些变量
 ---
 
 # These are variables that default to a localhost
@@ -13,13 +13,13 @@
 #
 # 值为"None"的变量在xjhorse配置文件写入磁盘时将会转化为null
 
-MYSQL_CONN_MAX_AGE: 0
+XJHORSE_MYSQL_CONN_MAX_AGE: 0
 
-MYSQL_HOST: 'db.xjhorse.net'
-MYSQL_PORT: '3306'
+XJHORSE_MYSQL_HOST: 'db.xjhorse.net'
+XJHORSE_MYSQL_PORT: '3306'
 
-MYSQL_DB_NAME: 'xjhorse'
-MYSQL_USER: 'xjhorse'
-MYSQL_USER_PASSWORD: 'password'
-MYSQL_USER_ADMIN: 'root'
-MYSQL_USER_ADMIN_PASSWORD: 'password'
+XJHORSE_MYSQL_DB_NAME: 'xjhorse'
+XJHORSE_MYSQL_USER: 'xjhorse'
+XJHORSE_MYSQL_USER_PASSWORD: 'password'
+XJHORSE_MYSQL_USER_ADMIN: 'root'
+XJHORSE_MYSQL_USER_ADMIN_PASSWORD: 'password'

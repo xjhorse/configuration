@@ -8,9 +8,8 @@
   gather_facts: True
   vars:
     # 允许外部服务器访问MySQL
-    MYSQL_BIND_ADDRESS: "0.0.0.0"
-    # 允许www.xjhorse.net访问MySQL数据库
-    MYSQL_ALLOWED_HOST: "www.xjhorse.net"
+    XJHORSE_MYSQL_BIND_ADDRESS: "0.0.0.0"
+
   vars_files:
     - "vars.yml"
   roles:
