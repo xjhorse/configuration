@@ -20,8 +20,10 @@ apt-get install -y git-core
 apt-get install -y build-essential libssl-dev libffi-dev libmysqlclient-dev
 
 # 3、安装python3开发相关模块
-apt-get install -y python3-dev python3-pip python3-apt python3-yaml 
+apt-get install -y python3-dev python3-pip python3-apt python3-yaml python3-venv 
 
 # 安装virtualenv
 pip3 install virtualenv
+
+# 4、安装ansible
 pip3 install ansible
