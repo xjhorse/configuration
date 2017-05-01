@@ -3,7 +3,7 @@
 remove_experimental_mysql: true
 
 mysql_debian_pkgs:
-  - "mysql-server-5.6"
+  - "mysql-server-5.7"
   - python3-mysqldb
 
 # MySQL服务器端口
