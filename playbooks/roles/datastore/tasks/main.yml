@@ -18,7 +18,7 @@
 
 - name: create database users
   mysql_user:
-    name: "{{ item.user }}"
+    name: "{{XJHORSE_PORTAL_HOSTNAME | default('localhost')}}@{{ item.user }}"
     password: "{{ item.pass }}"
     priv: "{{ item.db }}.*:ALL"
     append_privs: yes
@@ -27,7 +27,7 @@
 
 - name: setup the migration db user
   mysql_user:
-    name: "{{ XJHORSE_MYSQL_MIGRATE_USER }}"
+    name: "{{XJHORSE_PORTAL_HOSTNAME | default('localhost')}}@{{ XJHORSE_MYSQL_MIGRATE_USER }}"
     password: "{{ XJHORSE_MYSQL_MIGRATE_PASSWORD }}"
     priv: "{{ item }}.*:ALL"
     append_privs: yes

@@ -7,6 +7,8 @@
   become: True
   gather_facts: True
 
+  vars:
+    XJHORSE_PORTAL_HOSTNAME: "www.xjhorse.net"
   vars_files:
     - "vars.yml"
   roles:
