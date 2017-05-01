@@ -1,7 +1,7 @@
 ---
 
 mysql_pkgs:
-  - python-selinux
+  - python3-selinux
   - mysql-server
   - python3-mysqldb
 

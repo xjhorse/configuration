@@ -4,11 +4,11 @@ env:
  RUNLEVEL: 1
 
 memcached_redhat_pkgs:
-  - libselinux-python
+  - libselinux-python3
   - memcached
 
 memcached_ubuntu_pkgs:
-  - python-selinux
+  - python3-selinux
   - memcached
 
   
