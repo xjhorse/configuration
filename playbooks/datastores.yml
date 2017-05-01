@@ -4,7 +4,7 @@
 
 - name: Configure instance(s)
   hosts: datastores
-  sudo: True
+  become: True
   gather_facts: True
 
   vars_files:

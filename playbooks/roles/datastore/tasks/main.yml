@@ -25,7 +25,7 @@
   when: item.db != None and item.db != ''
   with_items: "{{ xjhorse_database_users }}"
 
-  - name: setup the migration db user
+- name: setup the migration db user
   mysql_user:
     name: "{{ XJHORSE_MYSQL_MIGRATE_USER }}"
     password: "{{ XJHORSE_MYSQL_MIGRATE_PASSWORD }}"
