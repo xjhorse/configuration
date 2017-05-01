@@ -2,10 +2,10 @@
 # Role 变量
 
 # MySQL服务器端口
-mysql_port: 3306
+mysql_port: "{{ XJHORSE_MYSQL_PORT | default('3306') }}"
 
 # MySQL绑定地址
-mysql_bind_address: "{{ MYSQL_BIND_ADDRESS | default('127.0.0.1') }}"
+mysql_bind_address: "{{ XJHORSE_MYSQL_BIND_ADDRESS | default('127.0.0.1') }}"
 
 # MySQL root用户口令
-mysql_root_db_pass: "{{ MYSQL_ROOT_PASS | default('password') }}"
+mysql_root_db_pass: "{{ XJHORSE_MYSQL_ROOT_PASSWORD | default('password') }}"

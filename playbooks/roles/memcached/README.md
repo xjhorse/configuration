@@ -1,36 +1,33 @@
 memcached
 ========
 
-This role helps to install a memcached server on the target host.
+该role用来在目标主机安装memcached服务器
 
 Requirements
 ------------
 
-This role requires Ansible 1.4 or higher, and platform requirements are listed
-in the metadata file.
+该role需要Ansible版本不低于1.4，支持的操作系统平台列示与metadata文件中
 
 Role Variables
 --------------
 
-The variables that can be passed to this role and a brief description about
-them are as follows:
+可以向该role传递的参数如下：
 
-    memcached_port: 11211              # The port in which memcached server should be listening
-    memcached_listen_address: 0.0.0.0  # The IP address to listen on
-    memcached_max_conn: 1024           # The number of max concurrent connections it should accept
-    memcached_cache_size: 64           # The cache size
-    memcached_fs_file_max: 756024      # The kernel parameter for max number of file handles
+    memcached_port: 11211              # memcached服务器监听端口
+    memcached_listen_address: 0.0.0.0  # memcached服务器监听的IP地址
+    memcached_max_conn: 1024           # 最大并发链接数量
+    memcached_cache_size: 64           # 缓存大小
+    memcached_fs_file_max: 756024      # 最大处理文件核心参数
 
 Example
 -------
 
-The following play setup's memcached with a different port number and
-available memory.
+下列例子用指定的端口和缓存来安装memcached
 
 	- hosts: all
 	  sudo: true
 	  roles:
-	  - {role: bennojoy.memcached, memcached_port: 11244, memcached_cache_size: 512 }
+	  - {role: memcached, memcached_port: 11244, memcached_cache_size: 512 }
 
 Dependencies
 ------------

@@ -6,15 +6,12 @@
   hosts: datastores
   sudo: True
   gather_facts: True
-  vars:
-    # 允许外部服务器访问MySQL
-    XJHORSE_MYSQL_BIND_ADDRESS: "0.0.0.0"
 
   vars_files:
     - "vars.yml"
   roles:
-    # 安装memcache、mysql等组件，创建数据库用户.
-    - role: memcache
-    - role: common
-    - role: mysql
-    - role: ansible
+    # 安装memcached服务器
+    - role: memcached
+
+    # 安装mysql服务器、创建数据库及用户
+    - role: datastore

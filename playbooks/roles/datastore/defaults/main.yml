@@ -1,0 +1,20 @@
+---
+# Role 变量
+
+# Debian包
+xjhorse_debian_pkgs:
+  - postfix
+  - libjpeg-dev
+
+# 数据库名称
+xjhorse_databases:
+  - "{{ XJHORSE_MYSQL_DB_NAME | default('xjhorse') }}"
+
+# 用户名称
+xjhorse_database_users:
+  - {
+      db: "{{ XJHORSE_MYSQL_DB_NAME | default('xjhorse') }}"
+      user: "{{ XJHORSE_MYSQL_USER | default('xjhorse') }}"
+      pass: "{{ XJHORSE_MYSQL_USER_PASSWORD | default('password') }}"
+    }
+    

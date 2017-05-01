@@ -1,0 +1,35 @@
+# Installs packages to run edx locally on a single instance
+#
+---
+- name: Install packages needed for single server
+  apt:
+    name: "{{ item }}"
+    install_recommends: yes
+    state: present
+  with_items: "{{ xjhorse_debian_pkgs }}"
+
+- name: create databases
+  mysql_db:
+    db: "{{ item }}"
+    state: present
+    encoding: utf8
+  when: item != None and item != ''
+  with_items: "{{ xjhorse_databases }}"
+
+- name: create database users
+  mysql_user:
+    name: "{{ item.user }}"
+    password: "{{ item.pass }}"
+    priv: "{{ item.db }}.*:ALL"
+    append_privs: yes
+  when: item.db != None and item.db != ''
+  with_items: "{{ xjhorse_database_users }}"
+
+  - name: setup the migration db user
+  mysql_user:
+    name: "{{ XJHORSE_MYSQL_MIGRATE_USER }}"
+    password: "{{ XJHORSE_MYSQL_MIGRATE_PASSWORD }}"
+    priv: "{{ item }}.*:ALL"
+    append_privs: yes
+  when: item != None and item != ''
+  with_items: "{{ edxlocal_databases }}"
