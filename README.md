@@ -26,6 +26,6 @@
 ### 4、安装新疆马业存储服务器
 
     cd /var/tmp/configuration/playbooks
-    sudo ansible-playbook -c local ./datastores.yml -i "inventory.ini"
-    
+    sudo -H ansible-playbook -c local ./datastores.yml -i "inventory.ini"
+
     

@@ -32,4 +32,4 @@
     priv: "{{ item }}.*:ALL"
     append_privs: yes
   when: item != None and item != ''
-  with_items: "{{ edxlocal_databases }}"
+  with_items: "{{ xjhorse_databases }}"
