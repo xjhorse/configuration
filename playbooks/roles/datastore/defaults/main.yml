@@ -13,8 +13,8 @@ xjhorse_databases:
 # 用户名称
 xjhorse_database_users:
   - {
-      db: "{{ XJHORSE_MYSQL_DB_NAME | default('xjhorse') }}"
-      user: "{{ XJHORSE_MYSQL_USER | default('xjhorse') }}"
-      pass: "{{ XJHORSE_MYSQL_USER_PASSWORD | default('password') }}"
+       db: "{{ XJHORSE_MYSQL_DB_NAME | default('xjhorse') }}",
+       user: "{{ XJHORSE_MYSQL_USER | default('xjhorse') }}",
+       pass: "{{ XJHORSE_MYSQL_USER_PASSWORD | default('password') }}"
     }
     
