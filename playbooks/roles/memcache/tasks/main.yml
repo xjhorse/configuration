@@ -22,8 +22,8 @@
   notify: restart memcached
   when: ansible_os_family == "Debian"
 
-#- name: Set the max open file descriptors 
-#  sysctl: name=fs.file-max value="{{ memcached_fs_file_max }}" state=present ignoreerrors=yes
+- name: Set the max open file descriptors 
+  sysctl: name=fs.file-max value="{{ memcached_fs_file_max }}" state=present ignoreerrors=yes
 
 - name: start the memcached service
   service: name=memcached state=started enabled=yes
