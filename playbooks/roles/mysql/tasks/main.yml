@@ -1,27 +1,17 @@
 ---
-- name: Look for mysql 5.6
-  shell: "dpkg -s mysql-server"
-  ignore_errors: yes
-  register: mysql_56_installed
-  changed_when: no
+- name: Add the OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Important message
-  debug:
-    msg: |
-      "MySQL experimental is already installed, make 'remove_experimental_mysql: true' in defaults/main.yml, 
-      if you want to remove it and install the stable version of MySQL"
-  when: "'5.6.14' in  mysql_56_installed.stdout and not remove_experimental_mysql"
+- name: Install the mysql packages in Redhat derivatives
+  yum: name={{ item }} state=installed
+  with_items: "{{ mysql_pkgs }}"
+  when: ansible_os_family == 'RedHat'
 
-- pause:
-    seconds: 10
-  when: "'5.6.14' in  mysql_56_installed.stdout and not remove_experimental_mysql"
-
-# remove this, once the new devstack is out
-- include: remove_mysql_experimental.yml
-  when: remove_experimental_mysql
-
-- include: mysql.yml
-  when: (mysql_56_installed.rc == 1) or (remove_experimental_mysql)
+- name: Install the mysql packages in Debian derivatives
+  apt: name={{ item }} state=installed update_cache=yes
+  with_items: "{{ mysql_pkgs }}"
+  environment: "{{ env }}"
+  when: ansible_os_family == 'Debian'
 
 - name: Copy the my.cnf file 
   template: src=my.cnf.{{ ansible_os_family }}.j2 dest={{ mysql_conf_dir }}/my.cnf
@@ -56,14 +46,11 @@
 - name: copy .my.cnf file with root password credentials
   template: src=.my.cnf.j2 dest=~/.my.cnf mode=0600
 
-- name: Ensure Anonymous user(s) does not exist
-  mysql_user:
-    name: ''
-    host: "{{ item }}"
-    state: absent
+- name: ensure anonymous users are not in the database
+  mysql_user: name='' host={{ item }} state=absent
   with_items:
-    - localhost
-    - "{{ ansible_hostname }}"
+   - localhost
+   - "{{ ansible_hostname }}"
 
 - name: remove the test database
   mysql_db: name=test state=absent
