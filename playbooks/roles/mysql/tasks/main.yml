@@ -49,10 +49,10 @@
 - name: ensure anonymous users are not in the database
   mysql_user: 
     name: ''
-    host: {{ item }}
+    host: "{{ item }}"
     state: absent
     login_user: root
-    login_password: {{ mysql_root_db_pass }}
+    login_password: "{{ mysql_root_db_pass }}"
   with_items:
    - localhost
    - "{{ ansible_hostname }}"
@@ -62,4 +62,4 @@
     name: test
     state: absent
     login_user: root
-    login_password: {{ mysql_root_db_pass }}
+    login_password: "{{ mysql_root_db_pass }}"
