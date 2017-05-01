@@ -12,8 +12,8 @@ nice		= 0
 
 [mysqld]
 user		= mysql
-pid-file	= /var/run/mysqld/mysqld.pid
-socket		= /var/run/mysqld/mysqld.sock
+pid-file	= /run/mysqld/mysqld.pid
+socket		= /run/mysqld/mysqld.sock
 port		= {{ mysql_port }}
 basedir		= /usr
 datadir		= /var/lib/mysql

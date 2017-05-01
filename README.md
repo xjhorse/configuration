@@ -22,4 +22,10 @@
 ### 3、克隆新疆马业安装配置资源库
     cd /var/tmp
     git clone https://github.com/xjhorse/configuration.git
+
+### 4、安装新疆马业存储服务器
+
+    cd /var/tmp/configuration/playbooks
+    sudo ansible-playbook -c local ./datastores.yml -i "inventory.ini"
+    
     
