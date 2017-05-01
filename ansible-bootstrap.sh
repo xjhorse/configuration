@@ -26,4 +26,4 @@ apt-get install -y python3-dev python3-pip python3-apt python3-yaml python3-venv
 pip3 install virtualenv
 
 # 4、安装ansible
-pip3 install ansible
+pip3 install ansible==2.2.0.0

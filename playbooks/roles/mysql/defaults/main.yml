@@ -1,5 +1,10 @@
 ---
 # Role 变量
+remove_experimental_mysql: true
+
+mysql_debian_pkgs:
+  - "mysql-server-5.6"
+  - python3-mysqldb
 
 # MySQL服务器端口
 mysql_port: "{{ XJHORSE_MYSQL_PORT | default('3306') }}"
