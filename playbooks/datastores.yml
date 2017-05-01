@@ -11,7 +11,7 @@
     - "vars.yml"
   roles:
     # 安装memcached服务器
-    - role: memcached
+    - role: memcache
 
     # 安装mysql服务器、创建数据库及用户
     - role: datastore
